@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Rock, Paper, Scissors Game
+</title>
+
+</head>
+<body>
+<h1>Rock, Paper, Scissors Game</h1>
+<h2>Lets play Rock, Paper, Scissors</h2>
+<h4>Choose a value between 1 - 3 in the box below(1 being Rock, 2 being Paper, 3 being Scissors)!!!!!!!</h4>
+<p id="computerScore"></p>
+<p id="computerScores"></p>
+
+<form>
+<input type="number" id="userNumber" name="userNum" min="1" max="3">
+<button type="button" id="button">Submit Object</button>
+</form>
+
+<script>
+var computerInput;
+var userInput;
+var computerScore;
+var userScore;
+var userPick;
+var computerScore1 = 0;
+var humanScore = 0;
+
+
+
+function getComputerNumber(){
+var ranNumber = Math.floor(Math.random() * 3) + 1;
+if (ranNumber == 1){
+computerInput = "Rock";
+
+}
+if (ranNumber == 2){
+
+computerInput = "Paper";
+}
+if (ranNumber == 3){
+computerInput = "Scissors";
+
+}
+
+}
+
+
+function getUserPicks(){
+
+userInput = document.getElementById("userNumber").value;
+if (userInput == 1){
+userPick = "Rock";
+}
+if (userInput == 2){
+userPick = "Paper";
+}
+if (userInput == 3){
+userPick = "Scissors";
+}
+getComputerNumber();
+console.log(userPick);
+console.log(computerInput);
+determineWinner();
+}
+
+function determineWinner(){
+
+	if (computerInput == "Rock"){
+		if(userPick == "Rock"){
+		console.log("It's a tie!!!")
+		}
+		if(userPick == "Paper"){
+		console.log("User Wins!!!!");
+		humanScore++;
+		}
+		if(userPick == "Scissors"){
+		console.log("Computer  Wins!!!!")
+		computerScore1++;
+		}
+	}
+	if(computerInput == "Paper"){
+		if(userPick == "Rock"){
+		console.log("Computer Wins!!!");
+		computerScore1++;
+		}
+		if(userPick == "Paper"){
+		console.log("It's a tie!!!");
+		
+		}
+		if(userPick == "Scissors"){
+		console.log("User Wins!!!!");
+		humanScore++;
+		}
+	
+	
+	}
+	
+	if(computerInput == "Scissors"){
+		if(userPick == "Rock"){
+		console.log("User Wins!!!");
+		humanScore++;
+		}
+		if(userPick == "Paper"){
+		console.log("Computer Wins!!!");
+		computerScore1++;
+		}
+		if(userPick == "Scissors"){
+		console.log("It's a tie!!!!");
+		
+		}
+	
+	
+	}	
+	document.getElementById("computerScore").innerHTML = "Computer Score: " + computerScore1;
+	document.getElementById("computerScores").innerHTML = "Human Score: " + humanScore;
+}
+
+document.getElementById("button").addEventListener("click", getUserPicks, false);
+
+</script>
+</body>
+
+</html>
